@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b03gpe5v57r0r"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_k0ia7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lp6p2"]
+albedo_color = Color(1, 0.341176, 0.341176, 1)
+
+[node name="MainScene" type="Node3D"]
+
+[node name="BG_Plane" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, -2.18557e-07, -5, 0, 5, -2.18557e-07, 0, 0, -3.00383)
+mesh = SubResource("PlaneMesh_k0ia7")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.536)
+fov = 50.0
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(-0.572161, 0.747976, -0.336399, 0.504633, 0.644409, 0.574529, 0.646512, 0.158965, -0.746158, 0, 0, -1.30771)
+material_override = SubResource("StandardMaterial3D_lp6p2")
