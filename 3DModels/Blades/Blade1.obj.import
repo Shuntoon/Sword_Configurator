@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b3ao3ko0xrcvm"
+path="res://.godot/imported/Blade1.obj-b8ef02361e3e8af46576dd9356cfa591.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Blade1.obj-b8ef02361e3e8af46576dd9356cfa591.mesh"]
+
+source_file="res://3DModels/Blades/Blade1.obj"
+dest_files=["res://.godot/imported/Blade1.obj-b8ef02361e3e8af46576dd9356cfa591.mesh", "res://.godot/imported/Blade1.obj-b8ef02361e3e8af46576dd9356cfa591.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

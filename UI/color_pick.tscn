@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cq0gvcsgf0hg7"]
+
+[node name="ColorPick" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+offset_right = 302.0
+offset_bottom = 234.0
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.0
+offset_top = -82.0
+offset_right = 139.0
+offset_bottom = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_right = 303.0
+offset_bottom = 26.0
+text = "Pick a Color"
+horizontal_alignment = 1
+vertical_alignment = 1

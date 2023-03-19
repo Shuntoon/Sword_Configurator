@@ -1,20 +1,256 @@
-[gd_scene load_steps=3 format=3 uid="uid://b03gpe5v57r0r"]
+[gd_scene load_steps=13 format=3 uid="uid://b03gpe5v57r0r"]
+
+[ext_resource type="Script" path="res://Scenes/main_scene.gd" id="1_ibmsb"]
+[ext_resource type="ArrayMesh" uid="uid://b3ao3ko0xrcvm" path="res://3DModels/Blades/Blade1.obj" id="2_8hw4p"]
+[ext_resource type="ArrayMesh" uid="uid://t5r4hf3y50rs" path="res://3DModels/Hilts/Hilt1.obj" id="3_komjt"]
+[ext_resource type="Material" uid="uid://cw8aeg0jk28sp" path="res://Mats/BladeMat.tres" id="3_qb4om"]
+[ext_resource type="ArrayMesh" uid="uid://bgq84cd61f6fs" path="res://3DModels/Handles/Handle1.obj" id="4_70nd7"]
+[ext_resource type="ArrayMesh" uid="uid://dqybbwft6pm48" path="res://3DModels/Pummels/Pummel1.obj" id="5_aq6kh"]
+[ext_resource type="Material" uid="uid://dvt8a8iv3qwis" path="res://Mats/HiltMat.tres" id="5_rrnba"]
+[ext_resource type="Material" uid="uid://b8rf5dvqb15y3" path="res://Mats/HandleMat.tres" id="7_3pgol"]
+[ext_resource type="Material" uid="uid://bqw8ilrou8rlo" path="res://Mats/PummelMat.tres" id="9_7r0bc"]
+[ext_resource type="PackedScene" uid="uid://cq0gvcsgf0hg7" path="res://UI/color_pick.tscn" id="10_r00f4"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_k0ia7"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lp6p2"]
-albedo_color = Color(1, 0.341176, 0.341176, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7do01"]
+albedo_color = Color(0.721569, 1, 1, 1)
 
 [node name="MainScene" type="Node3D"]
+script = ExtResource("1_ibmsb")
 
-[node name="BG_Plane" type="MeshInstance3D" parent="."]
+[node name="BGPlane" type="MeshInstance3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, -2.18557e-07, -5, 0, 5, -2.18557e-07, 0, 0, -3.00383)
 mesh = SubResource("PlaneMesh_k0ia7")
+surface_material_override/0 = SubResource("StandardMaterial3D_7do01")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.536)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.222, 1.705)
+current = true
 fov = 50.0
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(-0.572161, 0.747976, -0.336399, 0.504633, 0.644409, 0.574529, 0.646512, 0.158965, -0.746158, 0, 0, -1.30771)
-material_override = SubResource("StandardMaterial3D_lp6p2")
+[node name="SwordContainter" type="Node3D" parent="."]
+
+[node name="Blade" type="Node3D" parent="SwordContainter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.29554)
+
+[node name="BladeSpawn" type="Marker3D" parent="SwordContainter/Blade"]
+
+[node name="BladeMesh" type="MeshInstance3D" parent="SwordContainter/Blade/BladeSpawn"]
+transform = Transform3D(-2.18557e-08, 0.17101, 0.469846, 0, 0.469846, -0.17101, -0.5, -7.47509e-09, -2.05376e-08, 0, 0, 0)
+mesh = ExtResource("2_8hw4p")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_qb4om")
+
+[node name="Hilt" type="Node3D" parent="SwordContainter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.816, -1.296)
+
+[node name="HiltSpawn" type="Marker3D" parent="SwordContainter/Hilt"]
+
+[node name="HiltMesh" type="MeshInstance3D" parent="SwordContainter/Hilt/HiltSpawn"]
+transform = Transform3D(-2.18557e-08, 0.17101, 0.469846, 0, 0.469846, -0.17101, -0.5, -7.47509e-09, -2.05376e-08, 0, 0, 0)
+mesh = ExtResource("3_komjt")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("5_rrnba")
+
+[node name="Handle" type="Node3D" parent="SwordContainter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.292, -0.848, -1.296)
+
+[node name="HandleSpawn" type="Marker3D" parent="SwordContainter/Handle"]
+
+[node name="HandleMesh" type="MeshInstance3D" parent="SwordContainter/Handle/HandleSpawn"]
+transform = Transform3D(-2.18557e-08, 0.17101, 0.469846, 0, 0.469846, -0.17101, -0.5, -7.47509e-09, -2.05376e-08, -0.0803166, -0.163047, 0)
+mesh = ExtResource("4_70nd7")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("7_3pgol")
+
+[node name="Pummel" type="Node3D" parent="SwordContainter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.425, -1.247, -1.296)
+
+[node name="PummelSpawn" type="Marker3D" parent="SwordContainter/Pummel"]
+
+[node name="PummelMesh" type="MeshInstance3D" parent="SwordContainter/Pummel/PummelSpawn"]
+transform = Transform3D(-2.18557e-08, 0.17101, 0.469846, 0, 0.469846, -0.17101, -0.5, -7.47509e-09, -2.05376e-08, -0.0305024, 0.00327528, 0)
+mesh = ExtResource("5_aq6kh")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("9_7r0bc")
+
+[node name="KeyLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29375, 0.266315, 0.130414)
+light_color = Color(1, 0.913725, 0.819608, 1)
+shadow_enabled = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.728147, -0.489398, 0.479887, 0.408634, 0.872061, 0.269311, -0.550291, 0, 0.834973, -1.74097, 0, 0.130414)
+light_energy = 0.5
+
+[node name="FillLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.877895, -0.584019, -0.286038)
+light_color = Color(1, 0.968627, 0.929412, 1)
+light_energy = 0.5
+light_indirect_energy = 7.019
+omni_range = 7.297
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BladeButtons" type="Node2D" parent="HUD"]
+position = Vector2(966, 140)
+
+[node name="BladeNextButton" type="Button" parent="HUD/BladeButtons"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 678.0
+offset_top = 87.0
+offset_right = 850.0
+offset_bottom = 167.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 42
+text = "Next"
+
+[node name="BladePrevButton" type="Button" parent="HUD/BladeButtons"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -813.0
+offset_top = 87.0
+offset_right = -639.0
+offset_bottom = 167.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 42
+text = "Prev."
+
+[node name="HiltButtons" type="Node2D" parent="HUD"]
+position = Vector2(966, 391)
+
+[node name="HiltNextButton" type="Button" parent="HUD/HiltButtons"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 669.0
+offset_top = 47.0
+offset_right = 851.0
+offset_bottom = 127.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 42
+text = "Next"
+
+[node name="HiltPrevButton" type="Button" parent="HUD/HiltButtons"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -815.0
+offset_top = 47.0
+offset_right = -633.0
+offset_bottom = 127.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 42
+text = "Prev."
+
+[node name="HandleButtons" type="Node2D" parent="HUD"]
+position = Vector2(966, 671)
+
+[node name="HandleNextButton" type="Button" parent="HUD/HandleButtons"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 669.0
+offset_top = -14.0
+offset_right = 851.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 42
+text = "Next"
+
+[node name="HandlePrevButton" type="Button" parent="HUD/HandleButtons"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -815.0
+offset_top = -14.0
+offset_right = -633.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 42
+text = "Prev."
+
+[node name="PummelButtons" type="Node2D" parent="HUD"]
+position = Vector2(966, 932)
+
+[node name="PummelNextButton" type="Button" parent="HUD/PummelButtons"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 669.0
+offset_top = -53.0
+offset_right = 851.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 42
+text = "Next"
+
+[node name="PummelPrevButton" type="Button" parent="HUD/PummelButtons"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -815.0
+offset_top = -53.0
+offset_right = -633.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 42
+text = "Prev."
+
+[node name="BladeArea" type="Panel" parent="HUD"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 1034.0
+offset_top = 104.0
+offset_right = 1163.0
+offset_bottom = 648.0
+rotation = 0.349115
+scale = Vector2(0.829211, 1.20854)
+
+[node name="ColorPick" parent="." instance=ExtResource("10_r00f4")]
+visible = false
+
+[connection signal="gui_input" from="HUD" to="." method="_on_hud_gui_input"]
+[connection signal="pressed" from="HUD/BladeButtons/BladeNextButton" to="." method="_on_blade_next_button_pressed"]
+[connection signal="pressed" from="HUD/BladeButtons/BladePrevButton" to="." method="_on_blade_prev_button_pressed"]
+[connection signal="pressed" from="HUD/HiltButtons/HiltNextButton" to="." method="_on_hilt_next_button_pressed"]
+[connection signal="pressed" from="HUD/HiltButtons/HiltPrevButton" to="." method="_on_hilt_prev_button_pressed"]
+[connection signal="pressed" from="HUD/HandleButtons/HandleNextButton" to="." method="_on_handle_next_button_pressed"]
+[connection signal="pressed" from="HUD/HandleButtons/HandlePrevButton" to="." method="_on_handle_prev_button_pressed"]
+[connection signal="pressed" from="HUD/PummelButtons/PummelNextButton" to="." method="_on_pummel_next_button_pressed"]
+[connection signal="pressed" from="HUD/PummelButtons/PummelPrevButton" to="." method="_on_pummel_prev_button_pressed"]
+[connection signal="gui_input" from="HUD/BladeArea" to="." method="_on_panel_gui_input"]
