@@ -5,7 +5,7 @@
 [ext_resource type="ArrayMesh" uid="uid://ba7dd1bew08l4" path="res://3DModels/Handles/Handle3.obj" id="3_2yub0"]
 [ext_resource type="ArrayMesh" uid="uid://t5r4hf3y50rs" path="res://3DModels/Hilts/Hilt1.obj" id="4_a1do1"]
 [ext_resource type="ArrayMesh" uid="uid://cdxs6fxpad5hn" path="res://3DModels/Hilts/Hilt2.obj" id="5_51dst"]
-[ext_resource type="ArrayMesh" uid="uid://cy1yw14qy5plf" path="res://3DModels/Hilts/Hilt3.obj" id="6_4i4n5"]
+[ext_resource type="ArrayMesh" uid="uid://dysyeq0frqly0" path="res://3DModels/Hilts/Hilt3.obj" id="6_4i4n5"]
 [ext_resource type="ArrayMesh" uid="uid://dqybbwft6pm48" path="res://3DModels/Pummels/Pummel1.obj" id="7_uw86g"]
 [ext_resource type="ArrayMesh" uid="uid://r40suv1wtdfn" path="res://3DModels/Pummels/Pummel2.obj" id="8_03j4u"]
 [ext_resource type="ArrayMesh" uid="uid://dl3wilvj8mui7" path="res://3DModels/Pummels/Pummel3.obj" id="9_6vyag"]
