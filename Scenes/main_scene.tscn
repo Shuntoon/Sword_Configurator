@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b03gpe5v57r0r"]
+[gd_scene load_steps=15 format=3 uid="uid://b03gpe5v57r0r"]
 
 [ext_resource type="Script" path="res://Scenes/main_scene.gd" id="1_ibmsb"]
 [ext_resource type="ArrayMesh" uid="uid://b3ao3ko0xrcvm" path="res://3DModels/Blades/Blade1.obj" id="2_8hw4p"]
@@ -11,6 +11,7 @@
 [ext_resource type="Material" uid="uid://b8rf5dvqb15y3" path="res://Mats/HandleMat.tres" id="7_3pgol"]
 [ext_resource type="Material" uid="uid://bqw8ilrou8rlo" path="res://Mats/PummelMat.tres" id="9_7r0bc"]
 [ext_resource type="PackedScene" uid="uid://cq0gvcsgf0hg7" path="res://UI/color_pick.tscn" id="10_r00f4"]
+[ext_resource type="PackedScene" uid="uid://c1xs6awbk767j" path="res://inventory/inventory.tscn" id="11_au3j1"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_k0ia7"]
 
@@ -140,10 +141,10 @@ theme_override_font_sizes/font_size = 42
 text = "Prev."
 
 [node name="BladeLabe" type="Label" parent="HUD/BladeButtons"]
-offset_left = -907.0
-offset_top = 31.0
-offset_right = -753.0
-offset_bottom = 101.0
+offset_left = 754.0
+offset_top = 87.0
+offset_right = 908.0
+offset_bottom = 157.0
 theme_override_font_sizes/font_size = 24
 text = "Blade"
 horizontal_alignment = 1
@@ -183,9 +184,10 @@ theme_override_font_sizes/font_size = 42
 text = "Prev."
 
 [node name="Label2" type="Label" parent="HUD/HiltButtons"]
-offset_left = -907.0
-offset_right = -753.0
-offset_bottom = 70.0
+offset_left = 754.0
+offset_top = 47.0
+offset_right = 908.0
+offset_bottom = 117.0
 theme_override_font_sizes/font_size = 24
 text = "Hilt"
 horizontal_alignment = 1
@@ -225,10 +227,9 @@ theme_override_font_sizes/font_size = 42
 text = "Prev."
 
 [node name="Label3" type="Label" parent="HUD/HandleButtons"]
-offset_left = -907.0
-offset_top = -68.0
-offset_right = -753.0
-offset_bottom = 2.0
+offset_left = 754.0
+offset_right = 908.0
+offset_bottom = 70.0
 theme_override_font_sizes/font_size = 24
 text = "Handle"
 horizontal_alignment = 1
@@ -238,10 +239,10 @@ vertical_alignment = 1
 position = Vector2(966, 932)
 
 [node name="Label4" type="Label" parent="HUD/PummelButtons"]
-offset_left = -907.0
-offset_top = -116.0
-offset_right = -753.0
-offset_bottom = -46.0
+offset_left = 754.0
+offset_top = -53.0
+offset_right = 908.0
+offset_bottom = 17.0
 theme_override_font_sizes/font_size = 24
 text = "Pummel"
 horizontal_alignment = 1
@@ -332,6 +333,21 @@ text = "Sword Configurator"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Inventory" parent="HUD" instance=ExtResource("11_au3j1")]
+layout_mode = 1
+anchor_left = 0.0
+anchor_top = 0.212963
+anchor_right = 0.145833
+anchor_bottom = 0.887963
+
+[node name="Label" type="Label" parent="HUD/Inventory"]
+layout_mode = 0
+offset_top = -44.0
+offset_right = 406.0
+offset_bottom = -8.0
+theme_override_font_sizes/font_size = 32
+text = "Selected: "
+
 [node name="ColorPickBlade" parent="." instance=ExtResource("10_r00f4")]
 visible = false
 
@@ -370,6 +386,7 @@ color = Color(0.91, 0.793672, 0.3731, 1)
 [connection signal="gui_input" from="HUD/HiltArea" to="." method="_on_hilt_area_gui_input"]
 [connection signal="gui_input" from="HUD/HandleArea" to="." method="_on_handle_area_gui_input"]
 [connection signal="gui_input" from="HUD/PummelArea" to="." method="_on_pummel_area_gui_input"]
+[connection signal="item_selected" from="HUD/Inventory" to="." method="_on_inventory_item_selected"]
 
 [editable path="ColorPickBlade"]
 [editable path="ColorPickHilt"]
