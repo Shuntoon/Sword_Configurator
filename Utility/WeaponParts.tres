@@ -11,7 +11,7 @@
 [ext_resource type="ArrayMesh" uid="uid://dl3wilvj8mui7" path="res://3DModels/Pummels/Pummel3.obj" id="9_6vyag"]
 [ext_resource type="ArrayMesh" uid="uid://b3ao3ko0xrcvm" path="res://3DModels/Blades/Blade1.obj" id="10_mo7up"]
 [ext_resource type="ArrayMesh" uid="uid://dpkc4jnxxifo3" path="res://3DModels/Blades/Blade2.obj" id="11_ktoyo"]
-[ext_resource type="ArrayMesh" uid="uid://bluidoh55ppch" path="res://3DModels/Blades/Blade3.obj" id="12_dhadb"]
+[ext_resource type="ArrayMesh" uid="uid://ccq3wrhtdk8ip" path="res://3DModels/Blades/Blade3.obj" id="12_dhadb"]
 [ext_resource type="Script" path="res://Utility/BasePart.gd" id="13_1jqyr"]
 
 [resource]

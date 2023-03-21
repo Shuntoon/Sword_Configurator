@@ -33,27 +33,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
-	if bladeIndex > 3:
-		bladeIndex = 0
-	elif  bladeIndex < 0:
-		bladeIndex = 2
-		
-	if hiltIndex > 2:
-		hiltIndex = 0
-	elif  hiltIndex < 0:
-		hiltIndex = 2
-		
-	if handleIndex > 2:
-		handleIndex = 0
-	elif  handleIndex < 0:
-		handleIndex = 2
-		
-	if pummelIndex > 2:
-		pummelIndex = 0
-	elif  pummelIndex < 0:
-		pummelIndex = 2
-		
 	blade_mesh.mesh = weaponParts.bladeMeshes[bladeIndex]
 	var bladeMeshMat = blade_mesh.get_active_material(0)
 	bladeColor = color_pick_blade.get_node("Panel/ColorPickerButton").color
@@ -79,7 +58,7 @@ func _on_blade_next_button_pressed():
 	blade_mesh.scale = Vector3(startSize)
 	var tween = create_tween()
 	tween.tween_property(blade_mesh,"scale",Vector3(.57,.57,.57), transitionSpeed).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN_OUT)
-	bladeIndex += 1
+	bladeIndex = _rollover(bladeIndex + 1, weaponParts.bladeMeshes.size() - 1)
 	tween.tween_property(blade_mesh,"scale",Vector3(.5,.5,.5), transitionSpeed).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN_OUT)
 	pass # Replace with function body.
 
@@ -88,7 +67,7 @@ func _on_blade_prev_button_pressed():
 	blade_mesh.scale = Vector3(startSize)
 	var tween = create_tween()
 	tween.tween_property(blade_mesh,"scale",Vector3(.57,.57,.57), transitionSpeed).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN_OUT)
-	bladeIndex -= 1
+	bladeIndex = _rollover(bladeIndex - 1, weaponParts.bladeMeshes.size() - 1)
 	tween.tween_property(blade_mesh,"scale",Vector3(.5,.5,.5), transitionSpeed).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN_OUT)
 	pass # Replace with function body.
 
@@ -97,7 +76,7 @@ func _on_hilt_next_button_pressed():
 	hilt_mesh.scale = Vector3(startSize)
 	var tween = create_tween()
 	tween.tween_property(hilt_mesh,"scale",Vector3(.67,.67,.67), transitionSpeed).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN_OUT)
-	hiltIndex += 1
+	hiltIndex = _rollover(hiltIndex + 1, weaponParts.HiltMeshes.size() - 1)
 	tween.tween_property(hilt_mesh,"scale",Vector3(.6,.6,.6), transitionSpeed).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN_OUT)
 	pass # Replace with function body.
 
@@ -106,7 +85,7 @@ func _on_hilt_prev_button_pressed():
 	hilt_mesh.scale = Vector3(startSize)
 	var tween = create_tween()
 	tween.tween_property(hilt_mesh,"scale",Vector3(.67,.67,.67), transitionSpeed).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN_OUT)
-	hiltIndex -= 1
+	hiltIndex = _rollover(hiltIndex - 1, weaponParts.HiltMeshes.size() - 1)
 	tween.tween_property(hilt_mesh,"scale",Vector3(.6,.6,.6), transitionSpeed).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN_OUT)
 	pass # Replace with function body.
 
@@ -115,7 +94,7 @@ func _on_handle_next_button_pressed():
 	handle_mesh.scale = Vector3(startSize)
 	var tween = create_tween()
 	tween.tween_property(handle_mesh,"scale",Vector3(.57,.57,.57), transitionSpeed).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN_OUT)
-	handleIndex -= 1
+	handleIndex = _rollover(handleIndex + 1, weaponParts.HandleMeshes.size() - 1)
 	tween.tween_property(handle_mesh,"scale",Vector3(.5,.5,.5), transitionSpeed).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN_OUT)
 	pass # Replace with function body.
 
@@ -124,7 +103,7 @@ func _on_handle_prev_button_pressed():
 	handle_mesh.scale = Vector3(startSize)
 	var tween = create_tween()
 	tween.tween_property(handle_mesh,"scale",Vector3(.57,.57,.57), transitionSpeed).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN_OUT)
-	handleIndex -= 1
+	handleIndex = _rollover(handleIndex + 1, weaponParts.HandleMeshes.size() - 1)
 	tween.tween_property(handle_mesh,"scale",Vector3(.5,.5,.5), transitionSpeed).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN_OUT)
 	pass # Replace with function body.
 
@@ -133,7 +112,7 @@ func _on_pummel_next_button_pressed():
 	pummel_mesh.scale = Vector3(startSize)
 	var tween = create_tween()
 	tween.tween_property(pummel_mesh,"scale",Vector3(.57,.57,.57), transitionSpeed).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN_OUT)
-	pummelIndex += 1
+	pummelIndex = _rollover(pummelIndex + 1, weaponParts.PummelMeshes.size() - 1)
 	tween.tween_property(pummel_mesh,"scale",Vector3(.5,.5,.5), transitionSpeed).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN_OUT)
 	pass # Replace with function body.
 
@@ -142,10 +121,16 @@ func _on_pummel_prev_button_pressed():
 	pummel_mesh.scale = Vector3(startSize)
 	var tween = create_tween()
 	tween.tween_property(pummel_mesh,"scale",Vector3(.57,.57,.57), transitionSpeed).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN_OUT)
-	pummelIndex -= 1
+	pummelIndex = _rollover(pummelIndex - 1, weaponParts.PummelMeshes.size() - 1)
 	tween.tween_property(pummel_mesh,"scale",Vector3(.5,.5,.5), transitionSpeed).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN_OUT)
 
-
+func _rollover(value: int, max: int) -> int:
+	if value > max:
+		return 0
+	elif value < 0:
+		return max
+	else:
+		return value
 
 func _on_panel_gui_input(event):
 	if event is InputEvent:
