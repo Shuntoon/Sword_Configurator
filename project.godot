@@ -11,15 +11,13 @@ config_version=5
 [application]
 
 config/name="Sword_Configurator"
-run/main_scene="res://Scenes/main_scene.tscn"
+run/main_scene="res://main/main.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
-[display]
+[debug]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
-window/stretch/mode="canvas_items"
+file_logging/enable_file_logging.pc=false
 
 [input]
 

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://qic2r82iutox"
+path="res://.godot/imported/Handle2.obj-9423c53d242f57b0ebe04c4a1178b00d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Handle2.obj-9423c53d242f57b0ebe04c4a1178b00d.mesh"]
+
+source_file="res://assets/models/Handles/Handle2.obj"
+dest_files=["res://.godot/imported/Handle2.obj-9423c53d242f57b0ebe04c4a1178b00d.mesh", "res://.godot/imported/Handle2.obj-9423c53d242f57b0ebe04c4a1178b00d.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

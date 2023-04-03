@@ -1,0 +1,145 @@
+[gd_scene load_steps=9 format=3 uid="uid://cbnopjj0vmacm"]
+
+[ext_resource type="Script" path="res://main/main.gd" id="1_lljdw"]
+[ext_resource type="ArrayMesh" uid="uid://b3ao3ko0xrcvm" path="res://assets/models/Blades/Blade1.obj" id="2_y6vea"]
+[ext_resource type="ArrayMesh" uid="uid://bgq84cd61f6fs" path="res://assets/models/Handles/Handle1.obj" id="3_phpxl"]
+[ext_resource type="ArrayMesh" uid="uid://t5r4hf3y50rs" path="res://assets/models/Hilts/Hilt1.obj" id="4_akgb1"]
+[ext_resource type="ArrayMesh" uid="uid://dqybbwft6pm48" path="res://assets/models/Pummels/Pummel1.obj" id="5_ve4bo"]
+
+[sub_resource type="Environment" id="Environment_465de"]
+tonemap_mode = 1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_013dh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4b48l"]
+
+[node name="main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lljdw")
+metadata/_edit_use_anchors_ = true
+
+[node name="hud" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuBar" type="MenuBar" parent="hud"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 0.0570988
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="hud/MenuBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="hud/MenuBar/HBoxContainer"]
+layout_mode = 2
+text = "Project"
+
+[node name="Control" type="Control" parent="hud"]
+layout_mode = 1
+anchor_top = 0.0864198
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="left" type="TabContainer" parent="hud/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.213542
+anchor_bottom = 1.0
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="parts" type="Tree" parent="hud/Control/left"]
+layout_mode = 2
+columns = 3
+hide_root = true
+metadata/_edit_use_anchors_ = true
+
+[node name="files" type="Tree" parent="hud/Control/left"]
+layout_mode = 2
+hide_root = true
+metadata/_edit_use_anchors_ = true
+
+[node name="right" type="TabContainer" parent="hud/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.799479
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="variants" type="Tree" parent="hud/Control/right"]
+layout_mode = 2
+hide_root = true
+metadata/_edit_use_anchors_ = true
+
+[node name="world" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="world"]
+environment = SubResource("Environment_465de")
+
+[node name="background" type="Node3D" parent="world"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world/background"]
+transform = Transform3D(-2.18557e-07, 5, 0, -5, -2.18557e-07, 0, 0, 0, 5, -3.40061, 0, 0)
+mesh = SubResource("PlaneMesh_013dh")
+
+[node name="lights" type="Node3D" parent="world"]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="world/lights"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.79335, 0, 0)
+spot_range = 21.1928
+spot_angle = 25.4382
+
+[node name="cameras" type="Node3D" parent="world"]
+
+[node name="Camera3D" type="Camera3D" parent="world/cameras"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.801, 1.222, -0.044)
+
+[node name="parts" type="Node3D" parent="world"]
+
+[node name="Blade1" type="MeshInstance3D" parent="world/parts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.7086, -0.00631638)
+mesh = ExtResource("2_y6vea")
+skeleton = NodePath("../../..")
+
+[node name="Handle1" type="MeshInstance3D" parent="world/parts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -1.00116, 0.0631647)
+mesh = ExtResource("3_phpxl")
+skeleton = NodePath("../../..")
+
+[node name="Hilt1" type="MeshInstance3D" parent="world/parts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.224234, 0.0126329)
+mesh = ExtResource("4_akgb1")
+skeleton = NodePath("../../..")
+
+[node name="Pummel1" type="MeshInstance3D" parent="world/parts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -1.75913, 0.082114)
+mesh = ExtResource("5_ve4bo")
+skeleton = NodePath("../../..")
+
+[node name="Pummel2" type="MeshInstance3D" parent="world/parts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35577, -1.75913, 3.66785)
+mesh = ExtResource("5_ve4bo")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_4b48l")

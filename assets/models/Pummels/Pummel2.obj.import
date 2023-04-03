@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://r40suv1wtdfn"
+path="res://.godot/imported/Pummel2.obj-bd90fb88f579cb219858e28dd1cad8a4.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Pummel2.obj-bd90fb88f579cb219858e28dd1cad8a4.mesh"]
+
+source_file="res://assets/models/Pummels/Pummel2.obj"
+dest_files=["res://.godot/imported/Pummel2.obj-bd90fb88f579cb219858e28dd1cad8a4.mesh", "res://.godot/imported/Pummel2.obj-bd90fb88f579cb219858e28dd1cad8a4.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
